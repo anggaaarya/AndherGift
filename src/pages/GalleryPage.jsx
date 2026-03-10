@@ -14,22 +14,14 @@ const MEMORIES = [
 export default function GalleryPage() {
   const navigate = useNavigate()
   const [current, setCurrent] = useState(null)
-
   const item = current !== null ? MEMORIES[current] : null
 
   return (
     <>
       <HeartsCanvas />
       <style>{`
-        .mem-grid { 
-          display: grid; 
-          grid-template-columns: repeat(3, 1fr); 
-          gap: 0.5rem;
-          width: 100%;
-        }
-        @media (max-width: 600px) { 
-          .mem-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; } 
-        }
+        .mem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; width: 100%; }
+        @media (max-width: 600px) { .mem-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; } }
         @keyframes popIn { from { opacity:0; transform:scale(0.85) } to { opacity:1; transform:scale(1) } }
       `}</style>
 
@@ -53,13 +45,11 @@ export default function GalleryPage() {
               ) : (
                 <video src={mem.src} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} muted playsInline />
               )}
-
               {mem.type === 'video' && (
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <div style={{ width: 42, height: 42, background: 'rgba(232,114,154,0.85)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', boxShadow: '0 4px 20px rgba(232,114,154,0.4)' }}>▶</div>
                 </div>
               )}
-
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(6,6,8,0.8) 0%, transparent 50%)', display: 'flex', alignItems: 'flex-end', padding: '0.5rem' }}>
                 <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.75rem', color: '#f0ecf5' }}>{mem.caption} ♥</span>
               </div>
@@ -67,11 +57,8 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* secret button */}
         <div style={{ textAlign: 'center', marginTop: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}>
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.9rem', color: '#7a7a9a' }}>
-            ada yang tersembunyi... 🤫
-          </p>
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.9rem', color: '#7a7a9a' }}>ada yang tersembunyi... 🤫</p>
           <button
             onClick={() => navigate('/secret')}
             style={{ background: 'transparent', border: '1px dashed #7a7a9a', borderRadius: 20, padding: '0.5rem 1.4rem', cursor: 'pointer', fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', transition: 'color 0.3s, border-color 0.3s', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
@@ -84,7 +71,7 @@ export default function GalleryPage() {
 
         <div style={{ textAlign: 'center', marginTop: '1rem' }}>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate(-1)}
             style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: '1px solid #2a2a3a', borderRadius: 20, padding: '0.5rem 1.5rem', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s, border-color 0.3s' }}
             onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }}
             onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#2a2a3a' }}

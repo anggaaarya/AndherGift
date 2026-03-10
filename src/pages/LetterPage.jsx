@@ -65,12 +65,8 @@ export default function LetterPage() {
         }
       `}</style>
 
-      {/* overlay klik di luar untuk tutup surat */}
       {expanded && (
-        <div
-          onClick={() => setExpanded(false)}
-          style={{ position: 'fixed', inset: 0, zIndex: 0, cursor: 'pointer' }}
-        />
+        <div onClick={() => setExpanded(false)} style={{ position: 'fixed', inset: 0, zIndex: 0, cursor: 'pointer' }} />
       )}
 
       <div className="letter-page" style={{ zIndex: 1 }}>
@@ -88,7 +84,6 @@ export default function LetterPage() {
             Kata-kata dari Hatiku
           </h2>
 
-          {/* foto strip mobile */}
           <div className="mobile-photos" style={{ gap: '0.5rem', marginBottom: '1.2rem' }}>
             {PHOTOS_MOBILE.map((src, i) => (
               <div key={i} style={{ flex: 1, aspectRatio: '3/4', borderRadius: 6, overflow: 'hidden', border: '1px solid #2a2a3a', background: '#111118', boxShadow: '0 4px 16px rgba(232,114,154,0.08)' }}>
@@ -103,7 +98,6 @@ export default function LetterPage() {
             </p>
           )}
 
-          {/* card surat */}
           <div
             onClick={() => !expanded && setExpanded(true)}
             style={{
@@ -144,7 +138,6 @@ export default function LetterPage() {
             </div>
           </div>
 
-          {/* tombol bawah */}
           <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem', position: 'relative', zIndex: 1 }}>
             <button
               onClick={() => navigate('/gallery')}
@@ -155,7 +148,7 @@ export default function LetterPage() {
               📷 Our Memories →
             </button>
             <button
-              onClick={() => navigate('/home')}
+              onClick={() => navigate(-1)}
               style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: '1px solid #2a2a3a', borderRadius: 20, padding: '0.5rem 1.5rem', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s, border-color 0.3s' }}
               onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }}
               onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#2a2a3a' }}

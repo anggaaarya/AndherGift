@@ -2,10 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import HeartsCanvas from '../components/HeartsCanvas'
 
-// 2 passcode bisa keduanya unlock
 const PASSCODES = ['310623', '230825']
 
-// ✏️ TAMBAH FOTO AIB DI SINI
 const SECRET_PHOTOS = [
   { src: '/photos/bocilSMP.jpeg', caption: 'hahaha lucuu BGT BOCIL 😭' },
   { src: '/photos/Tidur.jpeg', caption: 'jangan marah ya 🤣' },
@@ -24,7 +22,6 @@ function Keypad({ input, onPress, onDelete, shaking }) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
-      {/* dots */}
       <div style={{ display: 'flex', gap: '1rem' }}>
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} style={{
@@ -37,7 +34,6 @@ function Keypad({ input, onPress, onDelete, shaking }) {
         ))}
       </div>
 
-      {/* grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.8rem', animation: shaking ? 'shake 0.4s ease' : 'none' }}>
         {keys.map((key, i) => (
           <button
@@ -105,7 +101,6 @@ export default function SecretPage() {
         <div style={{ position: 'relative', zIndex: 1, minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', gap: '1.2rem' }}>
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(232,114,154,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-          {/* lock icon */}
           <div style={{ width: 64, height: 64, borderRadius: '50%', background: '#111118', border: '1px solid #2a2a3a', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', boxShadow: '0 0 30px rgba(232,114,154,0.1)' }}>🔒</div>
 
           <div style={{ textAlign: 'center' }}>
@@ -113,7 +108,6 @@ export default function SecretPage() {
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 4vw, 2rem)', color: '#f0ecf5' }}>Masukkan Passcode</h2>
           </div>
 
-          {/* funny message atau default */}
           {funnyMsg ? (
             <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1rem', color: '#e8729a', textAlign: 'center', maxWidth: 280, animation: 'fadeUp 0.4s ease' }}>{funnyMsg}</p>
           ) : (
@@ -122,7 +116,6 @@ export default function SecretPage() {
 
           <Keypad input={input} onPress={handlePress} onDelete={handleDelete} shaking={shaking} />
 
-          {/* clue */}
           <div style={{ marginTop: '0.5rem', background: '#111118', border: '1px solid #2a2a3a', borderRadius: 8, padding: '1rem 1.5rem', maxWidth: 300, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg,transparent,#e8729a,#c9a96e,transparent)' }} />
             <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.85rem', color: '#e8729a', marginBottom: '0.5rem' }}>✦ clue ✦</p>
@@ -133,7 +126,12 @@ export default function SecretPage() {
             </p>
           </div>
 
-          <button onClick={() => navigate('/gallery')} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: '#7a7a9a', background: 'transparent', border: 'none', cursor: 'pointer', marginTop: '0.5rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#e8729a'} onMouseLeave={e => e.currentTarget.style.color = '#7a7a9a'}>
+          <button
+            onClick={() => navigate(-1)}
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: '1px solid #2a2a3a', borderRadius: 20, padding: '0.5rem 1.5rem', cursor: 'pointer', marginTop: '0.5rem', transition: 'color 0.3s, border-color 0.3s' }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#2a2a3a' }}
+          >
             ← kembali
           </button>
         </div>
@@ -159,14 +157,18 @@ export default function SecretPage() {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-            <button onClick={() => navigate('/gallery')} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: '#7a7a9a', background: 'transparent', border: 'none', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#e8729a'} onMouseLeave={e => e.currentTarget.style.color = '#7a7a9a'}>
+            <button
+              onClick={() => navigate(-1)}
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: '1px solid #2a2a3a', borderRadius: 20, padding: '0.5rem 1.5rem', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s, border-color 0.3s' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#2a2a3a' }}
+            >
               ← kembali
             </button>
           </div>
         </div>
       )}
 
-      {/* popup */}
       {current !== null && (
         <div onClick={() => setCurrent(null)} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(6,6,8,0.93)', backdropFilter: 'blur(12px)' }}>
           <button onClick={() => setCurrent(null)} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', width: 36, height: 36, background: '#111118', border: '1px solid #2a2a3a', borderRadius: '50%', color: '#7a7a9a', fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
