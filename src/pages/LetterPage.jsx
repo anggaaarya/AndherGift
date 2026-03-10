@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import HeartsCanvas from '../components/HeartsCanvas'
 
 const LETTER_PARAGRAPHS = [
-  "Hei kamu yang cantik,",
-  "Aku sering bingung harus mulai dari mana ketika ingin bercerita tentang perasaanku padamu. Tapi hari ini aku memberanikan diri — karena kamu layak mendengarnya, selengkap-lengkapnya.",
-  "Kamu adalah alasan aku tersenyum bahkan di hari-hari yang paling melelahkan. Ada sesuatu dalam caramu tertawa, caramu bicara, caramu ada — yang membuatku selalu ingin berada di dekatmu.",
-  "Aku tidak tahu apa yang akan terjadi esok hari, tapi aku tahu satu hal: aku bersyukur setiap hari karena hidupku bertemu denganmu.",
-  "Terima kasih sudah menjadi kamu. Terima kasih sudah membiarkan aku mencintaimu. 🖤",
+  "Hai, Andher Brana Meliala,",
+  "Kamu apa kabar cantik? Semoga kamu sehat-sehat ya di sana. Aku cuma lagi kangen kamu aja sih, hehe. Maaf ya. Aku tahu kamu lagi butuh personal space dengan keperluan kamu.",
+  "Aku juga nggak mau ganggu atau bikin semuanya jadi rumit. Cuma kadang kepikiran aja, jadi rasanya pengen nyapa sedikit lewat surat ini.",
+  "Aku harap hari-harimu berjalan baik, apa pun yang lagi kamu jalanin sekarang. Jaga diri kamu baik-baik ya.",
+  "Di sini aku cuma ingin bilang kalau aku masih peduli sama kamu. Nggak lebih dari itu, cuma rasa yang masih ada dan kadang muncul dalam bentuk kangen.",
+  "kalo kamu butuh aku atau dunia kamu lagi ga baik baik aja, please come back to me yeah?",
+  "Udah itu aja sih. Semoga kamu selalu baik-baik aja di sana. Love You Nder 🖤",
 ]
 
 const SENDER_NAME = "all my love for you"
