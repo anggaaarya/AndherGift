@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import HeartsCanvas from '../components/HeartsCanvas'
 
@@ -15,6 +15,16 @@ export default function GalleryPage() {
   const navigate = useNavigate()
   const [current, setCurrent] = useState(null)
   const item = current !== null ? MEMORIES[current] : null
+
+  useEffect(() => {
+    const audio = document.querySelector('audio')
+    if (!audio) return
+    if (current !== null && MEMORIES[current].type === 'video') {
+      audio.pause()
+    } else {
+      audio.play().catch(() => {})
+    }
+  }, [current])
 
   return (
     <>
@@ -82,7 +92,10 @@ export default function GalleryPage() {
       </div>
 
       {current !== null && (
-        <div onClick={() => setCurrent(null)} style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(6,6,8,0.93)', backdropFilter: 'blur(12px)' }}>
+        <div
+          onClick={() => setCurrent(null)}
+          style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(6,6,8,0.93)', backdropFilter: 'blur(12px)' }}
+        >
           <button onClick={() => setCurrent(null)} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', width: 36, height: 36, background: '#111118', border: '1px solid #2a2a3a', borderRadius: '50%', color: '#7a7a9a', fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}>✕</button>
           <div onClick={e => e.stopPropagation()} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.2rem', padding: '1rem', animation: 'popIn 0.4s cubic-bezier(0.34,1.56,0.64,1)' }}>
             <div style={{ width: 'min(420px, 85vw)', height: 'min(520px, 65vh)', background: '#111118', border: '1px solid #2a2a3a', borderRadius: 8, overflow: 'hidden', position: 'relative', boxShadow: '0 0 80px rgba(232,114,154,0.15)' }}>
