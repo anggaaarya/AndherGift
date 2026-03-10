@@ -65,6 +65,14 @@ export default function LetterPage() {
         }
       `}</style>
 
+      {/* overlay klik di luar untuk tutup surat */}
+      {expanded && (
+        <div
+          onClick={() => setExpanded(false)}
+          style={{ position: 'fixed', inset: 0, zIndex: 0, cursor: 'pointer' }}
+        />
+      )}
+
       <div className="letter-page" style={{ zIndex: 1 }}>
 
         <div className="side-col">
@@ -80,7 +88,7 @@ export default function LetterPage() {
             Kata-kata dari Hatiku
           </h2>
 
-          {/* foto strip — mobile only */}
+          {/* foto strip mobile */}
           <div className="mobile-photos" style={{ gap: '0.5rem', marginBottom: '1.2rem' }}>
             {PHOTOS_MOBILE.map((src, i) => (
               <div key={i} style={{ flex: 1, aspectRatio: '3/4', borderRadius: 6, overflow: 'hidden', border: '1px solid #2a2a3a', background: '#111118', boxShadow: '0 4px 16px rgba(232,114,154,0.08)' }}>
@@ -95,14 +103,16 @@ export default function LetterPage() {
             </p>
           )}
 
+          {/* card surat */}
           <div
             onClick={() => !expanded && setExpanded(true)}
             style={{
+              position: 'relative', zIndex: 1,
               background: '#111118',
               border: `1px solid ${expanded ? '#e8729a44' : '#2a2a3a'}`,
               borderRadius: 4,
               padding: 'clamp(1.5rem, 4vw, 2.5rem)',
-              position: 'relative', overflow: 'hidden',
+              overflow: 'hidden',
               cursor: expanded ? 'default' : 'pointer',
               transition: 'border-color 0.3s, box-shadow 0.3s',
               boxShadow: expanded ? '0 0 60px rgba(232,114,154,0.07)' : 'none',
@@ -134,19 +144,22 @@ export default function LetterPage() {
             </div>
           </div>
 
-          {expanded && (
-            <div style={{ textAlign: 'center', marginTop: '1.2rem' }}>
-              <button onClick={() => setExpanded(false)} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: '#7a7a9a', background: 'transparent', border: 'none', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#e8729a'} onMouseLeave={e => e.currentTarget.style.color = '#7a7a9a'}>
-                ↑ tutup surat
-              </button>
-            </div>
-          )}
-
-          <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-            <button onClick={() => navigate('/gallery')} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#c9a96e', background: 'transparent', border: '1px solid #c9a96e', borderRadius: 2, padding: '0.8rem 2rem', cursor: 'pointer', transition: 'background 0.3s, color 0.3s', width: '100%', maxWidth: 280 }} onMouseEnter={e => { e.currentTarget.style.background = '#c9a96e'; e.currentTarget.style.color = '#060608' }} onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#c9a96e' }}>
+          {/* tombol bawah */}
+          <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem', position: 'relative', zIndex: 1 }}>
+            <button
+              onClick={() => navigate('/gallery')}
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', letterSpacing: '0.1em', color: '#c9a96e', background: 'transparent', border: '1px solid #c9a96e', borderRadius: 2, padding: '0.8rem 2rem', cursor: 'pointer', transition: 'background 0.3s, color 0.3s', width: '100%', maxWidth: 280 }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#c9a96e'; e.currentTarget.style.color = '#060608' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#c9a96e' }}
+            >
               📷 Our Memories →
             </button>
-            <button onClick={() => navigate('/home')} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: '1px solid #2a2a3a', borderRadius: 20, padding: '0.5rem 1.5rem', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s, border-color 0.3s' }} onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }} onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#2a2a3a' }}>
+            <button
+              onClick={() => navigate('/home')}
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: '1px solid #2a2a3a', borderRadius: 20, padding: '0.5rem 1.5rem', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s, border-color 0.3s' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#2a2a3a' }}
+            >
               ← kembali
             </button>
           </div>
