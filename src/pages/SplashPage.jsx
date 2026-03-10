@@ -120,11 +120,11 @@ export default function SplashPage() {
           <div style={{ width: 60, height: 1, background: 'linear-gradient(to right, transparent, #e8729a44, transparent)' }} />
 
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.6rem, 5vw, 2.2rem)', color: '#f0ecf5', lineHeight: 1.3 }}>
-            Untuk Kamu,<br/><em>Andher Brana</em>
+            For ,<br/><em>Andher Brana Meliala</em>
           </h1>
 
           <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: '1rem', color: '#7a7a9a', maxWidth: 280, lineHeight: 1.7 }}>
-            ada sesuatu yang sudah lama ingin aku berikan untukmu...
+            Semoga Kamu Suka Ya kado nyaa yaa cantikk.
           </p>
 
           <button
