@@ -66,7 +66,6 @@ export default function LetterPage() {
           justify-content: center;
           padding: 3rem 2rem 6rem;
           gap: 2rem;
-          zIndex: 1;
         }
         .side-col { display: flex; }
         .letter-box {
@@ -79,19 +78,17 @@ export default function LetterPage() {
 
         @media (max-width: 768px) {
           .side-col { display: none !important; }
-          .letter-page { padding: 3rem 1.2rem 5rem; gap: 0; }
+          .letter-page { padding: 2rem 1.2rem 5rem; gap: 0; }
           .letter-box { max-width: 100% !important; }
         }
       `}</style>
 
       <div className="letter-page" style={{ zIndex: 1 }}>
 
-        {/* foto kiri */}
         <div className="side-col">
           <PhotoColumn photos={PHOTOS_LEFT} expanded={expanded} />
         </div>
 
-        {/* surat */}
         <div className={`letter-box${expanded ? ' expanded' : ''}`}>
 
           <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.05rem', color: '#e8729a', letterSpacing: '0.1em', textAlign: 'center', marginBottom: '0.6rem' }}>
@@ -107,7 +104,6 @@ export default function LetterPage() {
             </p>
           )}
 
-          {/* card surat */}
           <div
             onClick={() => !expanded && setExpanded(true)}
             style={{
@@ -158,7 +154,6 @@ export default function LetterPage() {
             </div>
           </div>
 
-          {/* tutup surat */}
           {expanded && (
             <div style={{ textAlign: 'center', marginTop: '1.2rem' }}>
               <button
@@ -172,7 +167,6 @@ export default function LetterPage() {
             </div>
           )}
 
-          {/* tombol bawah */}
           <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
             <button
               onClick={() => navigate('/gallery')}
@@ -184,16 +178,15 @@ export default function LetterPage() {
             </button>
             <button
               onClick={() => navigate('/')}
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: 'none', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#e8729a'}
-              onMouseLeave={e => e.currentTarget.style.color = '#7a7a9a'}
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: '1px solid #2a2a3a', borderRadius: 20, padding: '0.5rem 1.5rem', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s, border-color 0.3s' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#2a2a3a' }}
             >
               ← kembali
             </button>
           </div>
         </div>
 
-        {/* foto kanan */}
         <div className="side-col">
           <PhotoColumn photos={PHOTOS_RIGHT} expanded={expanded} />
         </div>

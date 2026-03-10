@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import SplashPage from './pages/SplashPage'
 import HomePage from './pages/HomePage'
 import LetterPage from './pages/LetterPage'
 import GalleryPage from './pages/GalleryPage'
@@ -10,7 +11,8 @@ export default function App() {
     <BrowserRouter>
       <MusicPlayer />
       <Routes>
-        <Route path="/"        element={<HomePage />} />
+        <Route path="/"        element={<SplashPage />} />
+        <Route path="/home"    element={<HomePage />} />
         <Route path="/letter"  element={<LetterPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/secret"  element={<SecretPage />} />

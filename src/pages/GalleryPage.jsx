@@ -21,12 +21,19 @@ export default function GalleryPage() {
     <>
       <HeartsCanvas />
       <style>{`
-        .mem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
-        @media (max-width: 600px) { .mem-grid { grid-template-columns: repeat(2, 1fr); } }
+        .mem-grid { 
+          display: grid; 
+          grid-template-columns: repeat(3, 1fr); 
+          gap: 0.5rem;
+          width: 100%;
+        }
+        @media (max-width: 600px) { 
+          .mem-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; } 
+        }
         @keyframes popIn { from { opacity:0; transform:scale(0.85) } to { opacity:1; transform:scale(1) } }
       `}</style>
 
-      <div style={{ position: 'relative', zIndex: 1, padding: '3rem 2rem 6rem', maxWidth: 900, margin: '0 auto' }}>
+      <div style={{ position: 'relative', zIndex: 1, padding: '3rem 1rem 6rem', maxWidth: 900, margin: '0 auto', overflowX: 'hidden' }}>
 
         <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.1rem', color: '#e8729a', textAlign: 'center', marginBottom: '0.6rem' }}>✦ kenangan kita ✦</p>
         <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.8rem,4vw,2.5rem)', textAlign: 'center', color: '#f0ecf5', marginBottom: '0.4rem' }}>Our Memory</h2>
@@ -53,8 +60,8 @@ export default function GalleryPage() {
                 </div>
               )}
 
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(6,6,8,0.8) 0%, transparent 50%)', display: 'flex', alignItems: 'flex-end', padding: '0.7rem' }}>
-                <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.8rem', color: '#f0ecf5' }}>{mem.caption} ♥</span>
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(6,6,8,0.8) 0%, transparent 50%)', display: 'flex', alignItems: 'flex-end', padding: '0.5rem' }}>
+                <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.75rem', color: '#f0ecf5' }}>{mem.caption} ♥</span>
               </div>
             </div>
           ))}
@@ -62,21 +69,26 @@ export default function GalleryPage() {
 
         {/* secret button */}
         <div style={{ textAlign: 'center', marginTop: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}>
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.85rem', color: '#3a2a4a' }}>
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.9rem', color: '#7a7a9a' }}>
             ada yang tersembunyi... 🤫
           </p>
           <button
             onClick={() => navigate('/secret')}
-            style={{ background: 'transparent', border: '1px dashed #2a2a3a', borderRadius: 20, padding: '0.4rem 1.2rem', cursor: 'pointer', fontFamily: "'Cormorant Garamond', serif", fontSize: '0.85rem', color: '#3a2a4a', transition: 'color 0.3s, border-color 0.3s', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
-            onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a44' }}
-            onMouseLeave={e => { e.currentTarget.style.color = '#3a2a4a'; e.currentTarget.style.borderColor = '#2a2a3a' }}
+            style={{ background: 'transparent', border: '1px dashed #7a7a9a', borderRadius: 20, padding: '0.5rem 1.4rem', cursor: 'pointer', fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', transition: 'color 0.3s, border-color 0.3s', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#7a7a9a' }}
           >
             🔒 klik kalau berani
           </button>
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-          <button onClick={() => navigate('/')} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: '#7a7a9a', background: 'transparent', border: 'none', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#e8729a'} onMouseLeave={e => e.currentTarget.style.color = '#7a7a9a'}>
+          <button
+            onClick={() => navigate('/')}
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#7a7a9a', background: 'transparent', border: '1px solid #2a2a3a', borderRadius: 20, padding: '0.5rem 1.5rem', cursor: 'pointer', letterSpacing: '0.05em', transition: 'color 0.3s, border-color 0.3s' }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#e8729a'; e.currentTarget.style.borderColor = '#e8729a' }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#7a7a9a'; e.currentTarget.style.borderColor = '#2a2a3a' }}
+          >
             ← kembali
           </button>
         </div>

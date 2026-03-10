@@ -8,16 +8,11 @@ export default function MusicPlayer() {
 
   useEffect(() => {
     const audio = audioRef.current
-    audio.volume = 1 // ikutin volume device
-    const tryPlay = async () => {
-      try {
-        await audio.play()
-        setPlaying(true)
-      } catch {
-        // autoplay diblock browser, user harus klik dulu
-      }
+    audio.volume = 1
+    // expose ke window supaya bisa dipanggil SplashPage
+    window.__playMusic = () => {
+      audio.play().then(() => setPlaying(true)).catch(() => {})
     }
-    setTimeout(tryPlay, 1000)
     setTimeout(() => setVisible(true), 500)
   }, [])
 
@@ -71,14 +66,15 @@ export default function MusicPlayer() {
               animation: playing ? 'spin 8s linear infinite' : 'none',
               background: 'linear-gradient(135deg, #1a0d20, #2a1530)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
+              position: 'relative',
             }}>
               <img
                 src="/Music/cover.jpg"
                 alt="album"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute' }}
                 onError={e => { e.target.style.display = 'none' }}
               />
-              <span style={{ fontSize: '1.5rem', position: 'absolute' }}>🎵</span>
+              <span style={{ fontSize: '1.5rem' }}>🎵</span>
             </div>
 
             {/* info */}
@@ -119,7 +115,7 @@ export default function MusicPlayer() {
             ♪
           </div>
 
-          {/* play/pause — lebih gede di HP */}
+          {/* play/pause */}
           <div
             onClick={toggle}
             style={{
@@ -149,9 +145,9 @@ export default function MusicPlayer() {
       </div>
 
       <style>{`
-        @keyframes spin { from { transform:rotate(0deg) } to { transform:rotate(360deg) } }
-        @keyframes popIn { from { opacity:0; transform:scale(0.9) translateY(10px) } to { opacity:1; transform:scale(1) translateY(0) } }
-        @keyframes eq { from { transform:scaleY(0.3) } to { transform:scaleY(1.5) } }
+        @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @keyframes popIn { from{opacity:0;transform:scale(0.9) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }
+        @keyframes eq { from{transform:scaleY(0.3)} to{transform:scaleY(1.5)} }
       `}</style>
     </>
   )
